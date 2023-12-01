@@ -7,7 +7,9 @@ const UserProfiles = (props) => {
     return(
         <li>
             <div className="app">
+              <div>
                 <h1> {name} </h1>
+              </div>              
                 <h2> Role: {role} </h2>
                 <h2> Age: {age} </h2>
                 <h2> Centuries: {centuries} </h2>

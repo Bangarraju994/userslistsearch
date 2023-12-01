@@ -52,19 +52,26 @@ const userDetailsList = [
     }
 ]
 
-
 class UserDetails extends Component {
+  state = {searchInput: '' }
+
+  onChangeSearchInput = (event) => {
+    this.setState({searchInput: event.target.value})
+  }
+
   render(){
+      const {searchInput} = this.state
+      const searchResults = userDetailsList.filter((eachUser)=> eachUser.name.includes(searchInput));
     return(
   <div > 
     <div className="app">
       <h1> Users List </h1>
-      <input type="serch"/>
+      <input type="serch" value={searchInput} onChange={this.onChangeSearchInput}/>
     </div>
     <div> 
       <ul>
-        {userDetailsList.map((eachItem) => 
-        (<UserProfiles userDetails = {eachItem}/>
+        {searchResults.map((eachUser) => 
+        (<UserProfiles userDetails = {eachUser} key={eachUser.uniqueNo}/>
         ))}
       </ul>
     </div>
